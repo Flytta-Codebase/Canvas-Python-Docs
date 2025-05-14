@@ -138,7 +138,7 @@ def handle_canvas_request():
 
 2.  **One-Click Deployment Option:**
 
-    [![Deploy to AWS](https://oneclick.amplifyapp.com/button.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/sedna-canvas-templates/sedna-hello-world-app.yaml)
+    [![Deploy to AWS](https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2017/02/10/launchwizard.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/sedna-canvas-templates/sedna-hello-world-app.yaml)
 
     Click the button above to start the CloudFormation deployment process. This will:
     * Create the necessary IAM roles
@@ -161,3 +161,5 @@ def handle_canvas_request():
 *   Add interactive elements.
 *   Manage state.
 *   Use `referenceData`.
+
+Refer to the schemas linked above for details.
