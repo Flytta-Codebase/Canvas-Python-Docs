@@ -10,12 +10,13 @@ The goal is to create a basic panel app that displays "Hello World" within Sedna
 2.  [Prerequisites](#prerequisites)
 3.  [Project Setup with Chalice](#project-setup-with-chalice)
 4.  [Understanding the Schemas](#understanding-the-schemas)
-    *   [Request Schema (`request.schema.json`)](#request-schema)
-    *   [Response Schema (`response.schema.json`)](#response-schema)
+    *   [Request Schema](#request-schema)
+    *   [Response Schema](#response-schema)
 5.  [Building the "Hello World" App](#building-the-hello-world-app)
 6.  [Deploying to AWS Lambda](#deploying-to-aws-lambda)
 7.  [Connecting to Sedna](#connecting-to-sedna)
 8.  [Further Development](#further-development)
+9.  [Setting Up the One-Click Deployment](#setting-up-the-one-click-deployment)
 
 ## Introduction to Sedna Canvas Apps
 
@@ -54,13 +55,20 @@ Chalice is a Python Serverless Microframework for AWS. It makes it easy to creat
 
 ## Understanding the Schemas
 
-Sedna Canvas Apps communicate using a defined JSON schema. You should have `request.schema.json` and `response.schema.json`.
+Sedna Canvas Apps communicate using a defined JSON schema. The latest schemas are available at these URLs:
 
-*   Place these files in a `schemas` directory within your project for reference:
-    *   `sedna-hello-world-app/schemas/request.schema.json`
-    *   `sedna-hello-world-app/schemas/response.schema.json`
+* Request Schema: [https://canvas.sedna.email/canvas-request-schema-2024-06-01.json](https://canvas.sedna.email/canvas-request-schema-2024-06-01.json)
+* Response Schema: [https://canvas.sedna.email/canvas-response-schema-2024-06-01.json](https://canvas.sedna.email/canvas-response-schema-2024-06-01.json)
 
-### Request Schema (`request.schema.json`)
+> **⚠️ IMPORTANT ⚠️**  
+> * **ALWAYS** use the hosted schemas linked above as your primary reference
+> * Any schemas included in this project may be **outdated**
+> * The hosted schemas are maintained and regularly updated with the latest definitions
+> * Local copies should only be used for offline reference and should be periodically updated
+
+It's recommended to reference these live schemas as they contain the most up-to-date definitions and may be updated periodically.
+
+### Request Schema
 
 This schema defines the structure of the JSON object your app will receive from Sedna. Key properties include:
 
@@ -74,7 +82,7 @@ This schema defines the structure of the JSON object your app will receive from 
 
 For our "Hello World" app, we won't need to deeply inspect the request, but it's good to be aware of its structure for more complex apps.
 
-### Response Schema (`response.schema.json`)
+### Response Schema
 
 This schema defines the structure of the JSON object your app must return to Sedna. This response tells Sedna how to render your app's UI. Key properties for our simple app:
 
@@ -128,6 +136,18 @@ def handle_canvas_request():
     Chalice will package your application, create an IAM role, the Lambda function, and an API Gateway endpoint.
     After deployment, Chalice will output the **Rest API URL**. This is crucial for connecting to Sedna.
 
+2.  **One-Click Deployment Option:**
+
+    [![Deploy to AWS](https://oneclick.amplifyapp.com/button.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/sedna-canvas-templates/sedna-hello-world-app.yaml)
+
+    Click the button above to start the CloudFormation deployment process. This will:
+    * Create the necessary IAM roles
+    * Deploy the Lambda function with the Hello World app code
+    * Set up the API Gateway
+    * Configure all required permissions
+
+    After deployment completes, go to the CloudFormation stack's Outputs tab to find the API Gateway URL that you'll need to register with Sedna.
+
 ## Connecting to Sedna
 
 1.  Contact Sedna team at support@sedna.com and deliver the following details:
@@ -141,5 +161,3 @@ def handle_canvas_request():
 *   Add interactive elements.
 *   Manage state.
 *   Use `referenceData`.
-
-Refer to `request.schema.json` and `response.schema.json` for details. 
