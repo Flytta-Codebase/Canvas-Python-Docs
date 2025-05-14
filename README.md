@@ -130,14 +130,10 @@ def handle_canvas_request():
 
 ## Connecting to Sedna
 
-1.  Log in to your Sedna environment.
-2.  Navigate to Canvas App management.
-3.  Register a new Canvas App:
+1.  Contact Sedna team at support@sedna.com and deliver the following details:
     *   **Name:** "Hello World App"
     *   **URL:** The Rest API URL from `chalice deploy`.
-    *   **Request Schema Version:** (e.g., `2024-06-01`).
-    *   **Contexts:** `GLOBAL` or `MESSAGE_READ`.
-4.  Save and test.
+    *   **Contexts:** MESSAGE_READ.
 
 ## Further Development
 
